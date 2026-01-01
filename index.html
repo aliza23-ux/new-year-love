@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Quiet Beginning</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-/* ===== GLOBAL ===== */
 body {
   margin: 0;
   min-height: 100vh;
@@ -21,7 +20,6 @@ body {
   overflow-y: auto;
 }
 
-/* Soft vignette */
 body::after {
   content: "";
   position: fixed;
@@ -30,7 +28,6 @@ body::after {
   pointer-events: none;
 }
 
-/* ===== CONTAINER ===== */
 .container {
   position: relative;
   z-index: 2;
@@ -44,18 +41,15 @@ body::after {
   backdrop-filter: blur(8px);
 }
 
-/* ===== TITLE ===== */
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2.6rem;
   text-align: center;
   margin-bottom: 36px;
   color: #f2d8a7;
-  font-weight: 500;
   text-shadow: 0 0 10px rgba(242,216,167,0.35);
 }
 
-/* ===== TEXT ===== */
 p {
   font-size: 1.05rem;
   line-height: 1.85;
@@ -65,40 +59,100 @@ p {
   position: relative;
 }
 
-/* ===== FADE-IN ===== */
+/* Fade-in */
 .fade {
   opacity: 0;
   transform: translateY(26px);
   transition: opacity 1.4s ease, transform 1.4s ease;
 }
-
 .fade.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ===== SCROLL SPARKLES ===== */
+/* Sparkles */
 .text-sparkle {
   position: absolute;
   width: 5px;
   height: 5px;
   pointer-events: none;
   background: radial-gradient(circle,
-    rgba(242,216,167,0.9) 0%,
-    rgba(242,216,167,0.45) 40%,
-    transparent 70%);
+    rgba(242,216,167,0.9),
+    rgba(242,216,167,0.4),
+    transparent);
   animation: sparkleFade 2.2s ease-out forwards;
 }
 
 @keyframes sparkleFade {
-  0% { transform: scale(0.5); opacity: 1; }
-  100% { transform: scale(2.4); opacity: 0; }
+  from { transform: scale(0.5); opacity: 1; }
+  to { transform: scale(2.4); opacity: 0; }
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 600px) {
-  h1 { font-size: 2.1rem; }
-  .container { padding: 32px 24px; }
+/* Final line pulse */
+@keyframes gentlePulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 12px rgba(255,255,255,0.45);
+  }
+  50% {
+    transform: scale(1.04);
+    text-shadow: 0 0 22px rgba(255,255,255,0.75);
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 12px rgba(255,255,255,0.45);
+  }
+}
+
+.final-line {
+  margin-top: 50px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #ffffff;
+  animation: gentlePulse 3.5s ease-in-out infinite;
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  background: white;
+  transform: rotate(-45deg);
+  top: -20px;
+  opacity: 0.8;
+  animation: fall 8s linear infinite;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+}
+.heart::before { top: -7px; left: 0; }
+.heart::after { left: 7px; top: 0; }
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(-45deg); opacity: 0; }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: white;
+  opacity: 0.7;
+  top: -10px;
+  animation: confettiFall linear infinite;
+}
+
+@keyframes confettiFall {
+  to { transform: translateY(110vh) rotate(360deg); }
 }
 </style>
 </head>
@@ -108,61 +162,62 @@ p {
 <div class="container">
   <h1>A Quiet Beginning ✨</h1>
 
-  <p class="fade sparkle-text">
-    This year did not rush into my life. It arrived quietly, and then it gave me you, as if the universe leaned in gently and whispered, pay attention. Meeting you felt less like a beginning and more like a remembering, like my heart had known your rhythm long before our paths crossed. And in seeing you, truly seeing you, something in me softened. I noticed the way you care quietly, the way you show up even when you don’t have to, the patience in your voice, the warmth in your presence, and I realized how rare and precious you are :)
-  </p>
+  <p class="fade sparkle-text">This year did not rush into my life. It arrived quietly, and then it gave me you, as if the universe leaned in gently and whispered, pay attention...</p>
 
-  <p class="fade sparkle-text">
-    You came into my days without noise, without force, and somehow changed their shape. In your presence, time learned how to soften. Ordinary moments became sacred simply because you were there, a smile, a word, a shared silence that felt fuller than conversation. Loving you has been a slow bloom, unfolding petal by petal, teaching me that the most beautiful things never hurry. I want you to know, with every fiber of my heart, that you are noticed, appreciated, and deeply loved :)
-  </p>
+  <p class="fade sparkle-text">You came into my days without noise, without force, and somehow changed their shape...</p>
 
-  <p class="fade sparkle-text">
-    As this year closes its eyes, I don’t see an ending. I see the first line of a poem still being written. I see two souls meeting at the right moment, not perfect, not finished, but open, willing to grow toward each other. I’m grateful that I get to know you, to witness your heart, to hold space for your dreams, your hopes, your fears, and every part of who you are. Of all the years that exist, it was this one that carried you to me, and I will always hold that as something holy :)
-  </p>
+  <p class="fade sparkle-text">As this year closes its eyes, I don’t see an ending...</p>
 
-  <p class="fade sparkle-text">
-    The new year waits like an unmarked page, and all I wish is to fill it with you, with mornings that begin in softness, nights that end in truth, and moments that live quietly between us. I want to learn the language of your heart, to love you in ways that feel like shelter, to be someone you can rest in when the world feels heavy :)
-  </p>
+  <p class="fade sparkle-text">The new year waits like an unmarked page...</p>
 
-  <p class="fade sparkle-text">
-    Whatever the coming year brings, change, closeness, becoming, know this: you are held and you are chosen a billion times over. You are loved in the quietest and deepest ways my heart knows how to love. There is no version of you that does not belong here with me :)
-  </p>
+  <p class="fade sparkle-text">Whatever the coming year brings...</p>
 
-  <p class="fade sparkle-text">
-    So here is my gratitude, written in the turning of the year. For meeting you. For knowing you. For the beginning that feels like forever unfolding slowly :)
-  </p>
+  <p class="fade sparkle-text">So here is my gratitude, written in the turning of the year...</p>
+
+  <div class="final-line fade sparkle-text">
+    HAPPY NEW YEAR JAAANNUUU :)
+  </div>
 </div>
 
 <script>
-/* ===== FADE + SCROLL SPARKLES ===== */
 const faders = document.querySelectorAll('.fade');
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('show');
-      createScrollSparkles(entry.target);
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          const s = document.createElement('div');
+          s.className = 'text-sparkle';
+          s.style.left = Math.random() * entry.target.offsetWidth + 'px';
+          s.style.top = Math.random() * entry.target.offsetHeight + 'px';
+          entry.target.appendChild(s);
+          setTimeout(() => s.remove(), 2200);
+        }, i * 260);
+      }
     }
   });
 }, { threshold: 0.35 });
 
 faders.forEach(el => observer.observe(el));
 
-function createScrollSparkles(el) {
-  const rect = el.getBoundingClientRect();
-  const sparkleCount = 5;
+setInterval(() => {
+  const h = document.createElement('div');
+  h.className = 'heart';
+  h.style.left = Math.random() * window.innerWidth + 'px';
+  h.style.animationDuration = 6 + Math.random() * 4 + 's';
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 10000);
+}, 900);
 
-  for (let i = 0; i < sparkleCount; i++) {
-    setTimeout(() => {
-      const s = document.createElement('div');
-      s.className = 'text-sparkle';
-      s.style.left = Math.random() * rect.width + 'px';
-      s.style.top = Math.random() * rect.height + 'px';
-      el.appendChild(s);
-      setTimeout(() => s.remove(), 2200);
-    }, i * 260);
-  }
-}
+setInterval(() => {
+  const c = document.createElement('div');
+  c.className = 'confetti';
+  c.style.left = Math.random() * window.innerWidth + 'px';
+  c.style.animationDuration = 4 + Math.random() * 4 + 's';
+  document.body.appendChild(c);
+  setTimeout(() => c.remove(), 9000);
+}, 400);
 </script>
 
 </body>
